@@ -1,0 +1,22 @@
+<script src="/socket.io/socket.io.js"></script>
+
+<div class="jumbotron">
+    <h1>Centro de Mensajes</h1>
+    <br>
+
+    <input type="hidden" id="inputUsername" value={{usuario}} readonly />
+    <input type="hidden" id="inputType" value="user" />
+
+    <hr>
+
+    <form id="formPublicarMensaje" class="form-inline" autocomplete="off">
+        <div class="form-group">
+            <input id="inputMensaje" type="text" class="form-control my-2 mr-2" placeholder="Ingresá un mensaje...">
+            <button disabled id="btnEnviar" type="submit" class="btn btn-primary my-2">Enviar!</button>
+        </div>
+    </form>
+    <div id="mensajes"></div>
+</div>
+</div>
+
+<script src="js/main.js"></script>
