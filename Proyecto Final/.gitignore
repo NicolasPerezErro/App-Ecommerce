@@ -3,4 +3,3 @@
 node_modules
 prod.env
 dev.env
-package-lock.json
