@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node main.js",
+    "start": "npm run prod",
     "dev": "set NODE_ENV=dev&& nodemon main.js",
     "prod": "set NODE_ENV=prod&& node main.js"
   },
