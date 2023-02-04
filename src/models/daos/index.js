@@ -1,8 +1,9 @@
 import config from '../../config/config.js'
-import ProductosDaoMongoDB from './productos/ProductosDaoMongoDb.js'
-import CarritosDaoMongoDB from './carritos/CarritosDaoMongoDB.js'
-import UsuariosDaoMongoDB from './usuarios/UsuariosDaoMongoDB.js'
-import MensajesDaoMongoDB from './mensajes/MensajesDaoMongoDB.js'
+
+import ProductosDaoMongoDb from './productos/ProductosDaoMongoDb.js'
+import CarritosDaoMongoDb from './carritos/CarritosDaoMongoDb.js'
+import UsuariosDaoMongoDb from './usuarios/UsuariosDaoMongoDb.js'
+import MensajesDaoMongoDb from './mensajes/MensajesDaoMongoDb.js'
 import OrdenesDaoMongoDb from './ordenes/OrdenesDaoMongoDb.js'
 
 let productosDao
@@ -28,10 +29,10 @@ switch (config.PERS) {
         break;
     case 'mongodb':
 
-        productosDao = new ProductosDaoMongoDB();
-        carritosDao = new CarritosDaoMongoDB();
-        usuariosDao = new UsuariosDaoMongoDB();
-        mensajesDao = new MensajesDaoMongoDB();
+        productosDao = new ProductosDaoMongoDb();
+        carritosDao = new CarritosDaoMongoDb();
+        usuariosDao = new UsuariosDaoMongoDb();
+        mensajesDao = new MensajesDaoMongoDb();
         ordenesDao = new OrdenesDaoMongoDb();
         break;
 }
