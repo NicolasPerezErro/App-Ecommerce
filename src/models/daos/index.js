@@ -1,4 +1,9 @@
 import config from '../../config/config.js'
+import ProductosDaoMongoDB from './productos/ProductosDaoMongoDb.js'
+import CarritosDaoMongoDB from './carritos/CarritosDaoMongoDB.js'
+import UsuariosDaoMongoDB from './usuarios/UsuariosDaoMongoDB.js'
+import MensajesDaoMongoDB from './mensajes/MensajesDaoMongoDB.js'
+import OrdenesDaoMongoDb from './ordenes/OrdenesDaoMongoDb.js'
 
 let productosDao
 let carritosDao
@@ -22,11 +27,6 @@ switch (config.PERS) {
         carritosDao = new CarritosDaoFirebase();
         break;
     case 'mongodb':
-        const { default: ProductosDaoMongoDB } = await import('./productos/ProductosDaoMongoDB.js')
-        const { default: CarritosDaoMongoDB } = await import('./carritos/CarritosDaoMongoDB.js')
-        const { default: UsuariosDaoMongoDB } = await import('./usuarios/UsuariosDaoMongoDB.js')
-        const { default: MensajesDaoMongoDB } = await import('./mensajes/MensajesDaoMongoDB.js')
-        const { default: OrdenesDaoMongoDb } = await import('./ordenes/OrdenesDaoMongoDb.js')
 
         productosDao = new ProductosDaoMongoDB();
         carritosDao = new CarritosDaoMongoDB();
