@@ -5,6 +5,7 @@ import ordenesService from "../models/services/ordenService.js";
 import { asDtoCarr } from '../classes/carritosDto.class.js'
 import { asDtoProdCarrito } from '../classes/productosCarritoDto.class.js'
 import enviarMail from "../classes/enviargmail.js";
+import logger from '../config/logger.js'
 
 const carrService = new carritosService();
 const prodService = new productosService();
@@ -21,7 +22,19 @@ class carritosController {
 
     constructor() { }
 
+    async getRootCarritosController(req, res) {
+        logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
+        contadorSession(req)
+        const result = await carrService.obtenerTodosCarritos();
+        if (result) {
+            res.json(result);
+        } else {
+            res.json({ error: "No hay carritos" });
+        }
+    }
+
     async getProductsCarritoByIdController(req, res) {
+        logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
         contadorSession(req)
         const id = req.params.id;
         const result = await carrService.obtenerCarritoPorId(id);
@@ -33,6 +46,7 @@ class carritosController {
     }
 
     async postRootApiController(req, res) {
+        logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
         contadorSession(req)
         const usuarios = await userService.obtenerUsuarios();
         let address;
@@ -49,6 +63,7 @@ class carritosController {
     }
 
     async postProductsCarritoByIdController(req, res) {
+        logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
         contadorSession(req)
         const idCarrito = req.params.id_carrito;
         const idProd = req.params.id_prod;
@@ -67,6 +82,7 @@ class carritosController {
     }
 
     async deleteCarritoByIdController(req, res) {
+        logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
         contadorSession(req)
         const id = req.params.id;
         const result = await carrService.obtenerCarritoPorId(id);
@@ -79,6 +95,7 @@ class carritosController {
     }
 
     async deleteProductsCarritoByIdController(req, res) {
+        logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
         contadorSession(req)
         const idCarrito = req.params.id_carrito;
         const idProd = req.params.id_prod;
@@ -97,6 +114,7 @@ class carritosController {
     }
 
     async postSendCarritoMailController(req, res) {
+        logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
         contadorSession(req)
         const idCarrito = req.params.id_carrito;
         const carrito = await carrService.obtenerCarritoPorId(idCarrito);

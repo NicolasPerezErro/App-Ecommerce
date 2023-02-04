@@ -18,7 +18,7 @@ async function postSignUpController(req, res) {
                       age: ${body.age},
                       address: ${body.address},
                       phone: ${body.phone}`
-    //enviarMail(subject, htmlInfo);
+    enviarMail(subject, htmlInfo);
     res.redirect('/');
 }
 

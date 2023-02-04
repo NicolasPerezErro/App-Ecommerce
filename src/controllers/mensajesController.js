@@ -2,10 +2,17 @@ import logger from '../config/logger.js'
 import mensajesService from '../models/services/mensajeService.js';
 import { asDtoMess } from '../classes/mensajesDto.class.js'
 
+function contadorSession(req) {
+    if (req.session.user) {
+        req.session.contador++;
+    }
+}
+
 const menService = new mensajesService()
 
 async function getChatController(req, res) {
     logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
+    contadorSession(req)
     const usuario = req.session.user;
     if (usuario == 'admin') {
         res.render('messagesAdmin')
@@ -16,6 +23,7 @@ async function getChatController(req, res) {
 
 async function getChatByEmailController(req, res) {
     logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
+    contadorSession(req)
     const email = req.params.email;
     const mensajes = await menService.obtenerMensajes();
     let mensajesUsuario = [];

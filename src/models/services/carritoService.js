@@ -3,6 +3,14 @@ import { carritosDao as carritosApi } from "../daos/index.js";
 class carritosService {
     constructor() { }
 
+    async obtenerTodosCarritos() {
+        try {
+            return await carritosApi.obtenerTodo();
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     async obtenerCarritoPorId(id) {
         try {
             return await carritosApi.obtenerPorId(id)

@@ -10,6 +10,15 @@ class ordenesService {
             console.error(error);
         }
     }
+
+    async obtenerOrdenes() {
+        try {
+            return await ordenesApi.obtenerTodo();
+        } catch (error) {
+            console.error(error);
+        }
+
+    }
 }
 
 export default ordenesService

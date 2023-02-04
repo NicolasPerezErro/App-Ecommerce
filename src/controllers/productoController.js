@@ -1,4 +1,5 @@
 import productosService from "../models/services/productoService.js";
+import logger from '../config/logger.js'
 import { asDtoProd } from '../classes/productosDto.class.js'
 
 const prodService = new productosService();
@@ -14,6 +15,7 @@ class productosController {
     constructor() { }
 
     async getProductsByIdController(req, res) {
+        logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
         contadorSession(req);
         const id = req.params.id;
         const result = await prodService.obtenerProductoPorId(id);
@@ -26,6 +28,7 @@ class productosController {
     }
 
     async getRootProductsController(req, res) {
+        logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
         contadorSession(req);
         const result = await prodService.obtenerTodoProductos();
         if (result) {
@@ -37,6 +40,7 @@ class productosController {
     }
 
     async postRootProductsController(req, res) {
+        logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
         contadorSession(req);
         const body = req.body;
         const result = await prodService.guardarProducto(body);
@@ -44,6 +48,7 @@ class productosController {
     }
 
     async putProductsByIdController(req, res) {
+        logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
         contadorSession(req);
         const body = req.body;
         const id = req.params.id;
@@ -52,6 +57,7 @@ class productosController {
     }
 
     async deleteProductsByIdController(req, res) {
+        logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
         contadorSession(req);
         const id = req.params.id;
         const result = await prodService.borrarProductoPorId(id);
@@ -64,6 +70,7 @@ class productosController {
     }
 
     async getProductsByCategory(req, res) {
+        logger.info(`Ruta: ${req.url} y metodo: ${req.method} ok`);
         contadorSession(req);
         const category = req.params.category;
         const result = await prodService.obtenerProductosPorCategoria(category);

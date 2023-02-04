@@ -16,6 +16,7 @@ import authRouter from './src/routes/authRoutes.js'
 import registerRouter from './src/routes/registerRoutes.js'
 import configRouter from './src/routes/serverRoutes.js'
 import chatRouter from './src/routes/mensajesRoutes.js'
+import ordenRouter from './src/routes/ordenRoutes.js';
 
 
 // configuro el servidor
@@ -35,7 +36,7 @@ app.use(passport.session());
 
 app.use(session(config.mongoSession));
 
-app.use('/', authRouter, registerRouter, configRouter, chatRouter);
+app.use('/', authRouter, registerRouter, configRouter, chatRouter, ordenRouter);
 app.use('/api/productos', productsRouter);
 app.use('/api/carritos', carritosRouter);
 
